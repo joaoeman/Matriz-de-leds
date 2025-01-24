@@ -1,13 +1,10 @@
-# Generated Cmake Pico project file
+# Generated CMake Pico project file
 
 cmake_minimum_required(VERSION 3.13)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
-# Initialise pico_sdk from installed location
-# (note this can come from environment, CMake cache etc)
 
 # == DO NOT EDIT THE FOLLOWING LINES for the Raspberry Pi Pico VS Code Extension to work ==
 if(WIN32)
@@ -28,35 +25,38 @@ set(PICO_BOARD pico_w CACHE STRING "Board type")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-project(tarefa.embarca C CXX ASM)
+# Nome do projeto
+project(tarefa_embarca C CXX ASM)
 
-# Initialise the Raspberry Pi Pico SDK
+# Inicializa o Raspberry Pi Pico SDK
 pico_sdk_init()
 
-# Add executable. Default name is the project name, version 0.1
+# Define o executável
+add_executable(tarefa_embarca tarefa.embarca.c matriz_leds.c)
 
-add_executable(tarefa.embarca tarefa.embarca.c )
+# Configurações de nome e versão do programa
+pico_set_program_name(tarefa_embarca "tarefa_embarca")
+pico_set_program_version(tarefa_embarca "0.1")
 
-pico_set_program_name(tarefa.embarca "tarefa.embarca")
-pico_set_program_version(tarefa.embarca "0.1")
+# Gera o cabeçalho PIO a partir do arquivo .pio
+pico_generate_pio_header(tarefa_embarca ${CMAKE_CURRENT_LIST_DIR}/pio_matrix.pio)
 
-# Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(tarefa.embarca 1)
-pico_enable_stdio_usb(tarefa.embarca 1)
+# Habilita entrada/saída por UART/USB
+pico_enable_stdio_uart(tarefa_embarca 1)
+pico_enable_stdio_usb(tarefa_embarca 1)
 
-# Add the standard library to the build
-target_link_libraries(tarefa.embarca
-        pico_stdlib)
-
-# Add the standard include files to the build
-target_include_directories(tarefa.embarca PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}
+# Vincula as bibliotecas necessárias ao programa
+target_link_libraries(tarefa_embarca
+    pico_stdlib
+    hardware_pio  # Biblioteca de suporte para PIO
 )
 
-# Add any user requested libraries
-target_link_libraries(tarefa.embarca 
-        
-        )
+# Inclui os diretórios padrão e adicionais no projeto
+target_include_directories(tarefa_embarca PRIVATE
+    ${CMAKE_CURRENT_LIST_DIR}
+)
 
-pico_add_extra_outputs(tarefa.embarca)
+# Gera os arquivos de saída adicionais (como .uf2)
+pico_add_extra_outputs(tarefa_embarca)
+
 
