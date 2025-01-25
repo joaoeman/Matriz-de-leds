@@ -73,3 +73,17 @@ RGB_cod obter_cor_por_parametro_RGB(int red, int green, int blue){
 
     return cor_customizada;
 }
+
+/*
+|   Função de execução da animação
+|   Reecebe um quadro de animações e executa a animação
+*/
+void executar_animacao(Quadros quadros,PIO pio, uint sm){
+    // calcula o delay para quantidade de quadros por segundo
+    int delay = (1000/quadros.n_quadros);
+    // executa a animação
+    for(int i=0;i<quadros.n_quadros;i++){
+        imprimir_desenho(quadros.desenhos[i],pio,sm);
+        sleep_ms(delay);
+    }
+}
