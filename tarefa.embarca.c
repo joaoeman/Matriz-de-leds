@@ -52,7 +52,7 @@ Matriz_leds_config matriz5 = {
 };
 
 
-void animacao2(){
+void animacao_b(){
     Matriz_leds_config matriz_b = {
         //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
         // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
@@ -131,7 +131,7 @@ int main()
         imprimir_desenho(matriz5, pio, sm);
         sleep_ms(200);//fim animacao joaoeman
 
-        animacao2(); //Animação EnzoLisboa
+        animacao_b(); //Animação EnzoLisboa
 
     }
 }
