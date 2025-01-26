@@ -472,6 +472,38 @@ void jogo_da_cobrinha(PIO pio, uint sm)
     }
 }
 
+void tecla_C(PIO pio, uint sm)
+{
+    Matriz_leds_config frame1 = {
+        //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
+        // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
+        {{0.8, 0.0, 0.0}, {0.8, 0.0, 0.0}, {0.8, 0.0, 0.0}, {0.8, 0.0, 0.0}, {0.8, 0.0, 0.0}}, // Linha 0
+        {{0.8, 0.0, 0.0}, {0.8, 0.0, 0.0}, {0.8, 0.0, 0.0}, {0.8, 0.0, 0.0}, {0.8, 0.0, 0.0}}, // Linha 1
+        {{0.8, 0.0, 0.0}, {0.8, 0.0, 0.0}, {0.8, 0.0, 0.0}, {0.8, 0.0, 0.0}, {0.8, 0.0, 0.0}}, // Linha 2
+        {{0.8, 0.0, 0.0}, {0.8, 0.0, 0.0}, {0.8, 0.0, 0.0}, {0.8, 0.0, 0.0}, {0.8, 0.0, 0.0}}, // Linha 3
+        {{0.8, 0.0, 0.0}, {0.8, 0.0, 0.0}, {0.8, 0.0, 0.0}, {0.8, 0.0, 0.0}, {0.8, 0.0, 0.0}}, // Linha 4
+    };
+
+    imprimir_desenho(frame1, pio, sm);
+    sleep_ms(tempo_frame);
+}
+
+void tecla_d(PIO pio, uint sm)
+{
+    Matriz_leds_config frame1 = {
+        //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
+        // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
+        {{0.0, 0.5, 0.0}, {0.0, 0.5, 0.0}, {0.0, 0.5, 0.0}, {0.0, 0.5, 0.0}, {0.0, 0.5, 0.0}}, // Linha 0
+        {{0.0, 0.5, 0.0}, {0.0, 0.5, 0.0}, {0.0, 0.5, 0.0}, {0.0, 0.5, 0.0}, {0.0, 0.5, 0.0}}, // Linha 1
+        {{0.0, 0.5, 0.0}, {0.0, 0.5, 0.0}, {0.0, 0.5, 0.0}, {0.0, 0.5, 0.0}, {0.0, 0.5, 0.0}}, // Linha 2
+        {{0.0, 0.5, 0.0}, {0.0, 0.5, 0.0}, {0.0, 0.5, 0.0}, {0.0, 0.5, 0.0}, {0.0, 0.5, 0.0}}, // Linha 3
+        {{0.0, 0.5, 0.0}, {0.0, 0.5, 0.0}, {0.0, 0.5, 0.0}, {0.0, 0.5, 0.0}, {0.0, 0.5, 0.0}}, // Linha 4
+    };
+
+    imprimir_desenho(frame1, pio, sm);
+    sleep_ms(tempo_frame);
+}
+
 int main()
 {
     PIO pio = pio0;
@@ -485,5 +517,7 @@ int main()
         // animacao_d(pio, sm); // Animação EnzoLisboa3
 
         // jogo_da_cobrinha(pio, sm); // Animação Leonardo
+        // tecla_C(pio, sm); // Tarefa Leonardo
+        // tecla_d(pio, sm); // Tarefa Leonardo
     }
 }
