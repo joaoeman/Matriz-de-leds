@@ -1,9 +1,10 @@
 #include "pico/stdlib.h"
 #include "hardware/pio.h"
 #include "matriz_leds.h"
+#include "pico/bootrom.h"
 
 #define tempo_frame 250
-
+const char leitura;
 // RGB_cod cor1 = obter_cor_por_parametro_RGB(0,0,0);
 
 void animacao(PIO pio, uint sm){
@@ -52,7 +53,7 @@ void animacao(PIO pio, uint sm){
         {{0.0, 0.0, 0.0}, {0.0, 1.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 1.0, 1.0}, {0.0, 0.0, 0.0}}, // Linha 3
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 1.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
     };
-
+    
     imprimir_desenho(matriz, pio, sm);//animacao joaoeman
     sleep_ms(tempo_frame);
     imprimir_desenho(matriz2, pio, sm);
@@ -250,18 +251,89 @@ void animacao_d(PIO pio, uint sm){
     imprimir_desenho(matriz_d5, pio, sm);
     sleep_ms(tempo_frame);
 }
-
+void apagar(PIO pio, uint sm){
+    Matriz_leds_config matriz_w = {
+        //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
+        // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
+        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 0
+        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 1
+        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 2
+        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
+        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
+    };
+    imprimir_desenho(matriz_w, pio, sm);
+    }
+void branco(PIO pio, uint sm){
+Matriz_leds_config matriz_branco = {
+    //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
+    // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
+    {{0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}}, // Linha 0
+    {{0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}}, // Linha 1
+    {{0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}}, // Linha 2
+    {{0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}}, // Linha 3
+    {{0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}}, // Linha 4
+    };
+    imprimir_desenho(matriz_branco, pio, sm);
+    }
 int main()
 {
     PIO pio = pio0;
     uint sm = configurar_matriz(pio);
+    apagar(pio, sm);
     while (true)
     {
-        animacao(pio, sm);//animacao joaoeman
-
-        animacao_b(pio, sm); //Animação EnzoLisboa
-        animacao_c(pio, sm); //Animação EnzoLisboa2
-        animacao_d(pio, sm); //Animação EnzoLisboa3
-
+            switch(leitura)
+        {
+            case 'A' :
+            //desliga todos os leds
+            break;
+            case 'B' :
+            //Acende os leds azuis com 100% de intensidade
+            break;
+            case 'C' :
+            //Acende os leds vermelhos com 80% de intensidade
+            break;
+            case 'D' :
+            //Acende os leds verdes com 50% de intensidade
+            break;
+            case '#' :
+            branco(pio, sm);//Acende os leds brancos com 20% de intensidade
+            break;
+            case '1' :
+            //Animação de Douglas
+            break;
+            case '2' :
+            //Animação de Ana Luiza
+            break;
+            case '3' :
+            //Animação de Léo Nunes
+            break;
+            case '4' :
+            //Animação de Alisson
+            break;
+            case '5' :
+            //Animação de Talles Gomes
+            break;
+            case '6' :
+            //Animação de Carolina
+            break;
+            case '7' :
+            animacao_b(pio, sm);//Animação de Enzo Lisboa
+            break;
+            case '8' :
+            animacao(pio, sm);//Animação de João, joaoeman
+            break;
+            case '9' :
+            animacao_c(pio, sm);//Animação de Enzo Lisboa
+            break;
+            case '0' :
+            animacao_d(pio, sm);//Animação de Enzo Lisboa
+            break;
+            case '*' :
+            reset_usb_boot(0, 0);//Animação de Enzo Lisboa
+            break;
+            
+        }      
     }
+    
 }
