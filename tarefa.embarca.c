@@ -8,7 +8,8 @@ const char leitura;
 
 // RGB_cod cor1 = obter_cor_por_parametro_RGB(0,0,0);
 
-void animacao(PIO pio, uint sm){
+void animacao(PIO pio, uint sm)
+{
     Matriz_leds_config matriz = {
         //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
         // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
@@ -67,7 +68,8 @@ void animacao(PIO pio, uint sm){
     sleep_ms(tempo_frame);
 }
 
-void animacao_b(PIO pio, uint sm){
+void animacao_b(PIO pio, uint sm)
+{
     Matriz_leds_config matriz_b = {
         //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
         // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
@@ -113,20 +115,21 @@ void animacao_b(PIO pio, uint sm){
         {{0.0, 1.0, 0.0}, {0.5, 0.5, 0.0}, {0.0, 0.0, 1.0}, {0.5, 0.5, 0.0}, {0.0, 1.0, 0.0}}, // Linha 3
         {{0.0, 1.0, 0.0}, {0.0, 1.0, 0.0}, {0.5, 0.5, 0.0}, {0.0, 1.0, 0.0}, {0.0, 1.0, 0.0}}, // Linha 4
     };
-    
-    Matriz_leds_config* matrizes_b[] = {
-        &matriz_b, &matriz_b2, &matriz_b3, &matriz_b4, &matriz_b5
-    }; // Colocando as matrizes na array
+
+    Matriz_leds_config *matrizes_b[] = {
+        &matriz_b, &matriz_b2, &matriz_b3, &matriz_b4, &matriz_b5}; // Colocando as matrizes na array
 
     int num_matrizes_b = sizeof(matrizes_b) / sizeof(matrizes_b[0]); // Número de matrizes
 
-    for (int i = 0; i < num_matrizes_b; i++) {
+    for (int i = 0; i < num_matrizes_b; i++)
+    {
         imprimir_desenho(*matrizes_b[i], pio, sm); // Passa cada matriz por referência
         sleep_ms(tempo_frame);
     }
 }
 
-void animacao_c(PIO pio, uint sm){
+void animacao_c(PIO pio, uint sm)
+{
     Matriz_leds_config matriz_c = {
         //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
         // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
@@ -235,21 +238,22 @@ void animacao_c(PIO pio, uint sm){
         {{0.5, 0.0, 0.0}, {0.5, 0.0, 0.0}, {0.5, 0.0, 0.0}, {0.5, 0.0, 0.0}, {0.5, 0.0, 0.0}}, // Linha 3
         {{0.5, 0.0, 0.0}, {0.5, 0.0, 0.0}, {0.5, 0.0, 0.0}, {0.5, 0.0, 0.0}, {0.5, 0.0, 0.0}}, // Linha 4
     };
-    
-    Matriz_leds_config* matrizes_c[] = {
-        &matriz_c, &matriz_c2, &matriz_c3, &matriz_c4, &matriz_c5, &matriz_c6, 
-        &matriz_c7, &matriz_c8, &matriz_c9, &matriz_c10, &matriz_c11, &matriz_c12
-    }; // Colocando as matrizes na array
+
+    Matriz_leds_config *matrizes_c[] = {
+        &matriz_c, &matriz_c2, &matriz_c3, &matriz_c4, &matriz_c5, &matriz_c6,
+        &matriz_c7, &matriz_c8, &matriz_c9, &matriz_c10, &matriz_c11, &matriz_c12}; // Colocando as matrizes na array
 
     int num_matrizes_c = sizeof(matrizes_c) / sizeof(matrizes_c[0]); // Número de matrizes
 
-    for (int i = 0; i < num_matrizes_c; i++) {
+    for (int i = 0; i < num_matrizes_c; i++)
+    {
         imprimir_desenho(*matrizes_c[i], pio, sm); // Passa cada matriz por referência
         sleep_ms(tempo_frame);
     }
 }
 
-void animacao_d(PIO pio, uint sm){
+void animacao_d(PIO pio, uint sm)
+{
     Matriz_leds_config matriz_d = {
         //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
         // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
@@ -296,13 +300,13 @@ void animacao_d(PIO pio, uint sm){
         {{0.3, 0.0, 0.3}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.3, 0.0, 0.3}}, // Linha 4
     };
 
-    Matriz_leds_config* matrizes_d[] = {
-        &matriz_d, &matriz_d2, &matriz_d3, &matriz_d4, &matriz_d5
-    }; // Colocando as matrizes na array
+    Matriz_leds_config *matrizes_d[] = {
+        &matriz_d, &matriz_d2, &matriz_d3, &matriz_d4, &matriz_d5}; // Colocando as matrizes na array
 
     int num_matrizes_d = sizeof(matrizes_d) / sizeof(matrizes_d[0]); // Número de matrizes
 
-    for (int i = 0; i < num_matrizes_d; i++) {
+    for (int i = 0; i < num_matrizes_d; i++)
+    {
         imprimir_desenho(*matrizes_d[i], pio, sm); // Passa cada matriz por referência
         sleep_ms(tempo_frame);
     }
