@@ -464,7 +464,7 @@ int main()
             animacao_d(pio, sm);//Animação de Enzo Lisboa
             break;
             case '*' :
-            reset_usb_boot(0, 0);//Animação de Enzo Lisboa
+            reset_usb_boot(0, 0);//Comando de bootSel
             break;
             
         }      
