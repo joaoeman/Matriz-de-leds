@@ -268,7 +268,6 @@ int main()
     config_animacoes();
     while (true)
     {
-        animacao(pio, sm);//animacao joaoeman
         executar_animacao(0,pio,sm);
         sleep_ms(2000);
         executar_animacao(1,pio,sm);
