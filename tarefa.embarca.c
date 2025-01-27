@@ -7,6 +7,8 @@
 // RGB_cod cor1 = obter_cor_por_parametro_RGB(0,0,0);
 
 void animacao(PIO pio, uint sm){
+    Quadros animacao1;
+    animacao1.n_quadros=5;
     Matriz_leds_config matriz = {
         //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
         // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
@@ -16,6 +18,7 @@ void animacao(PIO pio, uint sm){
         {{0.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
     };
+    animacao1.desenhos[0]=&matriz;
     Matriz_leds_config matriz2 = {
         //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
         // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
@@ -25,6 +28,7 @@ void animacao(PIO pio, uint sm){
         {{0.0, 0.0, 0.0}, {1.0, 0.0, 1.0}, {0.0, 0.0, 0.0}, {1.0, 0.0, 1.0}, {0.0, 0.0, 0.0}}, // Linha 3
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {1.0, 0.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
     };
+    animacao1.desenhos[1]=&matriz2;
     Matriz_leds_config matriz3 = {
         //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
         // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
@@ -34,6 +38,7 @@ void animacao(PIO pio, uint sm){
         {{0.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
     };
+    animacao1.desenhos[2]=&matriz3;
     Matriz_leds_config matriz4 = {
         //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
         // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
@@ -43,6 +48,7 @@ void animacao(PIO pio, uint sm){
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 0.0}}, // Linha 3
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
     };
+    animacao1.desenhos[3]=&matriz4;
     Matriz_leds_config matriz5 = {
         //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
         // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
@@ -52,7 +58,10 @@ void animacao(PIO pio, uint sm){
         {{0.0, 0.0, 0.0}, {0.0, 1.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 1.0, 1.0}, {0.0, 0.0, 0.0}}, // Linha 3
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 1.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
     };
+    animacao1.desenhos[4]=&matriz5;
 
+    executar_animacao(0,pio,sm);
+    /*
     imprimir_desenho(matriz, pio, sm);//animacao joaoeman
     sleep_ms(tempo_frame);
     imprimir_desenho(matriz2, pio, sm);
@@ -63,6 +72,7 @@ void animacao(PIO pio, uint sm){
     sleep_ms(tempo_frame);
     imprimir_desenho(matriz5, pio, sm);
     sleep_ms(tempo_frame);
+    */
 }
 
 void animacao_b(PIO pio, uint sm){
@@ -255,13 +265,23 @@ int main()
 {
     PIO pio = pio0;
     uint sm = configurar_matriz(pio);
+    config_animacoes();
     while (true)
     {
         animacao(pio, sm);//animacao joaoeman
-
+        executar_animacao(0,pio,sm);
+        sleep_ms(2000);
+        executar_animacao(1,pio,sm);
+        sleep_ms(2000);
+        executar_animacao(2,pio,sm);
+        sleep_ms(2000);
+        executar_animacao(3,pio,sm);
+        sleep_ms(2000);
+        /*
         animacao_b(pio, sm); //Animação EnzoLisboa
         animacao_c(pio, sm); //Animação EnzoLisboa2
         animacao_d(pio, sm); //Animação EnzoLisboa3
-
+        */
+       
     }
 }
