@@ -1,7 +1,6 @@
 #include "pico/stdlib.h"
 #include "hardware/pio.h"
 #include "matriz_leds.h"
-#include "pico/bootrom.h"
 
 #define tempo_frame 250
 const char leitura;
@@ -19,6 +18,7 @@ void animacao(PIO pio, uint sm)
         {{0.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
     };
+    animacao1.desenhos[0]=&matriz;
     Matriz_leds_config matriz2 = {
         //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
         // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
@@ -28,6 +28,7 @@ void animacao(PIO pio, uint sm)
         {{0.0, 0.0, 0.0}, {1.0, 0.0, 1.0}, {0.0, 0.0, 0.0}, {1.0, 0.0, 1.0}, {0.0, 0.0, 0.0}}, // Linha 3
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {1.0, 0.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
     };
+    animacao1.desenhos[1]=&matriz2;
     Matriz_leds_config matriz3 = {
         //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
         // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
@@ -37,6 +38,7 @@ void animacao(PIO pio, uint sm)
         {{0.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
     };
+    animacao1.desenhos[2]=&matriz3;
     Matriz_leds_config matriz4 = {
         //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
         // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
@@ -46,6 +48,7 @@ void animacao(PIO pio, uint sm)
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 0.0}}, // Linha 3
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
     };
+    animacao1.desenhos[3]=&matriz4;
     Matriz_leds_config matriz5 = {
         //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
         // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
@@ -56,6 +59,10 @@ void animacao(PIO pio, uint sm)
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 1.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
     };
     
+    animacao1.desenhos[4]=&matriz5;
+
+    executar_animacao(0,pio,sm);
+    /*
     imprimir_desenho(matriz, pio, sm);//animacao joaoeman
     sleep_ms(tempo_frame);
     imprimir_desenho(matriz2, pio, sm);
@@ -66,6 +73,7 @@ void animacao(PIO pio, uint sm)
     sleep_ms(tempo_frame);
     imprimir_desenho(matriz5, pio, sm);
     sleep_ms(tempo_frame);
+    */
 }
 
 void animacao_b(PIO pio, uint sm)
@@ -615,6 +623,7 @@ int main()
 {
     PIO pio = pio0;
     uint sm = configurar_matriz(pio);
+    config_animacoes();
     while (true)
     {
             switch(leitura)
