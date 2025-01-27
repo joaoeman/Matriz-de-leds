@@ -311,7 +311,7 @@ RGB_cod obter_cor_por_parametro_RGB(int red, int green, int blue){
 
 /*
 |   Função de execução da animação
-|   Reecebe um quadro de animações e executa a animação
+|   Recebe um quadro de animações e executa a animação
 */
 void executar_animacao(int num_animacao,PIO pio, uint sm){
     // calcula o delay para quantidade de quadros por segundo
