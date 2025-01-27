@@ -1,6 +1,7 @@
 #include "pico/stdlib.h"
 #include "hardware/pio.h"
 #include "matriz_leds.h"
+#include "pico/bootrom.h"
 
 #define tempo_frame 250
 const char leitura;
