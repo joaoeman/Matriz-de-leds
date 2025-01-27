@@ -584,6 +584,38 @@ void jogo_da_cobrinha(PIO pio, uint sm)
     }
 }
 
+void tecla_A(PIO pio, uint sm)
+{
+    Matriz_leds_config matriz = {
+        //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
+        // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
+        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 0
+        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 1
+        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 2
+        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
+        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
+    };
+
+    imprimir_desenho(matriz, pio, sm);
+    sleep_ms(tempo_frame);
+}
+
+void tecla_B(PIO pio, uint sm)
+{
+    Matriz_leds_config matriz = {
+        //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
+        // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
+        {{0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}}, // Linha 0
+        {{0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}}, // Linha 1
+        {{0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}}, // Linha 2
+        {{0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}}, // Linha 3
+        {{0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}}, // Linha 4
+    };
+
+    imprimir_desenho(matriz, pio, sm);
+    sleep_ms(tempo_frame);
+}
+
 void tecla_C(PIO pio, uint sm)
 {
     Matriz_leds_config frame1 = {
@@ -626,10 +658,10 @@ int main()
             switch(leitura)
         {
             case 'A' :
-            //desliga todos os leds
+            tecla_A(pio, sm); //desliga todos os leds
             break;
             case 'B' :
-            //Acende os leds azuis com 100% de intensidade
+            tecla_B(pio, sm); //Acende os leds azuis com 100% de intensidade
             break;
             case 'C' :
             tecla_C(pio, sm); // Acende os leds vermelhos com 80% de intensidade
