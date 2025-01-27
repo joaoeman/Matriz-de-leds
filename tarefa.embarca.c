@@ -1,6 +1,7 @@
 #include "pico/stdlib.h"
 #include "hardware/pio.h"
 #include "matriz_leds.h"
+#include "pico/bootrom.h"
 
 #define tempo_frame 250
 
@@ -281,6 +282,7 @@ int main()
         animacao_c(pio, sm); //Animação EnzoLisboa2
         animacao_d(pio, sm); //Animação EnzoLisboa3
         */
-       
+       apagar_matriz(pio,sm);
+       reset_usb_boot(0,0);
     }
 }

@@ -39,6 +39,7 @@
     "files.associations": {
         "stdlib.h": "c",
         "pio.h": "c",
-        "pio_matrix.pio.h": "c"
+        "pio_matrix.pio.h": "c",
+        "clocks.h": "c"
     }
 }

@@ -22,5 +22,6 @@ void imprimir_desenho(Matriz_leds_config configuracao, PIO pio, uint sm);
 
 void executar_animacao(int num_animacao,PIO pio, uint sm);
 void config_animacoes();
+void apagar_matriz(PIO pio, uint sm);
 
 RGB_cod obter_cor_por_parametro_RGB(int red, int green, int blue);

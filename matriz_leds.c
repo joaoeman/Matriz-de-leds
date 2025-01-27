@@ -5,6 +5,7 @@
 #include "hardware/clocks.h"
 #include "matriz_leds.h"
 
+
 // Arquivo .pio para controle da matriz
 #include "pio_matrix.pio.h"
 
@@ -322,4 +323,20 @@ void executar_animacao(int num_animacao,PIO pio, uint sm){
         imprimir_desenho(*(ANIMACOES[num_animacao].desenhos[i]),pio,sm);
         sleep_ms(delay);
     }
+}
+
+/*
+|   Função para apagar os leds da matriz
+*/
+void apagar_matriz(PIO pio, uint sm){
+    Matriz_leds_config reset = {
+        //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
+        // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
+        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 0
+        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 1
+        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 2
+        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
+        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
+    };
+    imprimir_desenho(reset,pio,sm);
 }
