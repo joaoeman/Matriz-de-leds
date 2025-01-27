@@ -4,7 +4,7 @@
 #include "pico/bootrom.h"
 
 #define tempo_frame 250
-const char leitura;
+char leitura;
 
 // RGB_cod cor1 = obter_cor_por_parametro_RGB(0,0,0);
 
@@ -682,7 +682,8 @@ int main()
             jogo_da_cobrinha(pio, sm); // Animação Leonardo
             break;
             case '4' :
-            //Animação de Alisson
+                executar_animacao(0,pio,sm);
+                //Animação de Alisson
             break;
             case '5' :
             anima_05(pio, sm);//Animação de Talles Gomes
