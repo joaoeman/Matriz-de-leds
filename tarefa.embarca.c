@@ -788,7 +788,7 @@ int main()
             //Animação de Douglas
             break;
             case '2' :
-            //Animação de Ana Luiza
+            animacao_g(pio, sm); //Animação de Ana Luiza
             break;
             case '3' :
             jogo_da_cobrinha(pio, sm); // Animação Leonardo
