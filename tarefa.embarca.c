@@ -769,7 +769,7 @@ int main()
                 branco(pio, sm); // Acende os leds brancos com 20% de intensidade
                 break;
             case '1' :
-                // Animação de Douglas
+                 // Animação de Douglas
                 break;
             case '2' :
                 animacao_g(pio, sm); // Animação de Ana Luiza
@@ -784,7 +784,7 @@ int main()
                 anima_05(pio, sm); // Animação de Talles Gomes
                 break;
             case '6' :
-                animacao_g(pio, sm); // Animação de Carolina
+                 // Animação de Carolina
                 break;
             case '7' :
                 animacao_b(pio, sm); // Animação de Enzo Lisboa
