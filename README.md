@@ -15,6 +15,10 @@ executar animações na matriz de LEDs.
 - Ler entradas de um teclado matricial 4x4.
 - Suporte para diferentes animações acionadas por teclas específicas.
 
+## Demonstração
+
+[Assista ao vídeo da demonstração](https://www.dropbox.com/scl/fi/a4qve5p4nwv7sbpgf0s9u/tarefaEmbarca.mp4?rlkey=0vyh2cncgzef0g00jj49pzl8f&st=e56yb55n&dl=0)
+
 ## Pré-requisitos
 
 1. **Instalar o SDK do Raspberry Pi Pico**:
