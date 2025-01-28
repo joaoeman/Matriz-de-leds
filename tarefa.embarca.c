@@ -7,55 +7,44 @@
 #define rows 4
 #define cols 4
 
-const uint8_t row_pins[rows] = {26, 22, 21, 20}; // R1 R2 R3 R4
-const uint8_t col_pins[cols] = {19, 18, 17, 16}; // C1 C2 C3 C4
+const uint8_t row_pins[rows] = {26,22,21,20};//R1 R2 R3 R4
+const uint8_t col_pins[cols] = {19,18,17,16};//C1 C2 C3 C4
 
-// Mapeamento do teclado matricial
+//mapamento teclado matricial
 const char key_map[rows][cols] = {
-    {'1', '2', '3', 'A'},
-    {'4', '5', '6', 'B'},
-    {'7', '8', '9', 'C'},
-    {'*', '0', '#', 'D'}};
+    {'1','2','3','A'},
+    {'4','5','6','B'},
+    {'7','8','9','C'},
+    {'*','0','#','D'}
+};
 
-void keypad_init()
-{
-    for (int i = 0; i < rows; i++)
-    {
+void keypad_init(){
+    for(int i = 0; i< rows;i++){
         gpio_init(row_pins[i]);
         gpio_set_dir(row_pins[i], GPIO_OUT);
-        gpio_put(row_pins[i], false);
+        gpio_put(row_pins[i],false);
     }
-    for (int i = 0; i < cols; i++)
-    {
+    for(int i = 0; i< cols;i++){
         gpio_init(col_pins[i]);
         gpio_set_dir(col_pins[i], GPIO_IN);
-        gpio_pull_up(col_pins[i]); // Considerar pull-up se necessário
+        gpio_pull_down(col_pins[i]);
     }
 }
-
-char read_keypad()
-{
-    for (int row = 0; row < rows; row++)
-    {
+char read_keypad(){
+    for(int row = 0;row<rows;row++){
         gpio_put(row_pins[row], 1);
 
-        for (int col = 0; col < cols; col++)
-        {
-            if (gpio_get(col_pins[col]) == 1)
-            { // Verifica se a coluna está alta
-                gpio_put(row_pins[row], 0);
-                sleep_ms(20); // Debounce
-                if (gpio_get(col_pins[col]) == 1)
-                { // Verifica novamente após debounce
-                    while (gpio_get(col_pins[col]) == 1)
-                        ; // Espera a tecla ser liberada
-                    return key_map[row][col];
-                }
+        for(int col = 0; col<cols;col++){
+
+            if(gpio_get(col_pins[col])){
+                gpio_put(row_pins[row],0);
+                sleep_ms(20);
+                return key_map[row][col];
             }
         }
         gpio_put(row_pins[row], 0);
     }
-    return '\0'; // Retorna caractere nulo se nenhuma tecla for pressionada
+    return '\0';
 }
 
 void animacao(PIO pio, uint sm)
@@ -69,7 +58,7 @@ void animacao(PIO pio, uint sm)
         {{0.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
     };
-
+    
     Matriz_leds_config matriz2 = {
         //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
         // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
@@ -79,7 +68,7 @@ void animacao(PIO pio, uint sm)
         {{0.0, 0.0, 0.0}, {1.0, 0.0, 1.0}, {0.0, 0.0, 0.0}, {1.0, 0.0, 1.0}, {0.0, 0.0, 0.0}}, // Linha 3
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {1.0, 0.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
     };
-
+    
     Matriz_leds_config matriz3 = {
         //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
         // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
@@ -89,7 +78,7 @@ void animacao(PIO pio, uint sm)
         {{0.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {1.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
     };
-
+    
     Matriz_leds_config matriz4 = {
         //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
         // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
@@ -99,7 +88,7 @@ void animacao(PIO pio, uint sm)
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 0.0}}, // Linha 3
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
     };
-
+   
     Matriz_leds_config matriz5 = {
         //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
         // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
@@ -109,7 +98,7 @@ void animacao(PIO pio, uint sm)
         {{0.0, 0.0, 0.0}, {0.0, 1.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 1.0, 1.0}, {0.0, 0.0, 0.0}}, // Linha 3
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 1.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
     };
-
+    
     imprimir_desenho(matriz, pio, sm);
     sleep_ms(tempo_frame);
     imprimir_desenho(matriz2, pio, sm);
@@ -293,9 +282,10 @@ void animacao_c(PIO pio, uint sm)
         {{0.5, 0.0, 0.0}, {0.5, 0.0, 0.0}, {0.5, 0.0, 0.0}, {0.5, 0.0, 0.0}, {0.5, 0.0, 0.0}}, // Linha 4
     };
 
-    Matriz_leds_config *matrizes_c[] = {
-        &matriz_c, &matriz_c2, &matriz_c3, &matriz_c4, &matriz_c5, &matriz_c6,
-        &matriz_c7, &matriz_c8, &matriz_c9, &matriz_c10, &matriz_c11, &matriz_c12}; // Colocando as matrizes na array
+    Matriz_leds_config* matrizes_c[] = {
+        &matriz_c, &matriz_c2, &matriz_c3, &matriz_c4, &matriz_c5, &matriz_c6, 
+        &matriz_c7, &matriz_c8, &matriz_c9, &matriz_c10, &matriz_c11, &matriz_c12
+    }; // Colocando as matrizes na array
 
     int num_matrizes_c = sizeof(matrizes_c) / sizeof(matrizes_c[0]); // Número de matrizes
 
@@ -366,23 +356,21 @@ void animacao_d(PIO pio, uint sm)
     }
 }
 
-void branco(PIO pio, uint sm)
-{
-    Matriz_leds_config matriz_branco = {
-        //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
-        // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
-        {{0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}}, // Linha 0
-        {{0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}}, // Linha 1
-        {{0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}}, // Linha 2
-        {{0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}}, // Linha 3
-        {{0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}}, // Linha 4
+void branco(PIO pio, uint sm){
+Matriz_leds_config matriz_branco = {
+    //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
+    // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
+    {{0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}}, // Linha 0
+    {{0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}}, // Linha 1
+    {{0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}}, // Linha 2
+    {{0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}}, // Linha 3
+    {{0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}}, // Linha 4
     };
     imprimir_desenho(matriz_branco, pio, sm);
 }
 
-void anima_05(PIO pio, uint sm)
-{
-    Matriz_leds_config matriz_f1 = {
+void anima_05(PIO pio, uint sm){
+    Matriz_leds_config matriz_f1 =  {
         //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
         // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
         {{0.0, 0.0, 0.0}, {0.7, 0.5, 0.3}, {0.0, 0.0, 0.8}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 0
@@ -806,59 +794,56 @@ int main()
     while (true)
     {
         char leitura = read_keypad();
-        if (leitura != '\0')
+        switch(leitura)
         {
-            switch (leitura)
-            {
-            case 'A':
+            case 'A' :
                 tecla_A(pio, sm); // Desliga todos os leds
                 break;
-            case 'B':
+            case 'B' :
                 tecla_B(pio, sm); // Acende os leds azuis com 100% de intensidade
                 break;
-            case 'C':
+            case 'C' :
                 tecla_C(pio, sm); // Acende os leds vermelhos com 80% de intensidade
                 break;
-            case 'D':
+            case 'D' :
                 tecla_D(pio, sm); // Acende os leds verdes com 50% de intensidade
                 break;
-            case '#':
+            case '#' :
                 branco(pio, sm); // Acende os leds brancos com 20% de intensidade
                 break;
-            case '1':
-                // Animação de Douglas
+            case '1' :
+                 // Animação de Douglas
                 break;
-            case '2':
+            case '2' :
                 animacao_g(pio, sm); // Animação de Ana Luiza
-                break;
-            case '3':
+            break;
+            case '3' :
                 jogo_da_cobrinha(pio, sm); // Animação Leonardo
                 break;
-            case '4':
-                executar_animacao(0, pio, sm); // Animação de Alisson
+            case '4' :
+                executar_animacao(0,pio,sm); // Animação de Alisson
                 break;
-            case '5':
+            case '5' :
                 anima_05(pio, sm); // Animação de Talles Gomes
                 break;
-            case '6':
-                // Animação de Carolina
+            case '6' :
+                 // Animação de Carolina
                 break;
-            case '7':
+            case '7' :
                 animacao_b(pio, sm); // Animação de Enzo Lisboa
                 break;
-            case '8':
+            case '8' :
                 animacao(pio, sm); // Animação de João, joaoeman
                 break;
-            case '9':
+            case '9' :
                 animacao_c(pio, sm); // Animação de Enzo Lisboa
                 break;
-            case '0':
+            case '0' :
                 animacao_d(pio, sm); // Animação de Enzo Lisboa
                 break;
-            case '*':
+            case '*' :
                 reset_usb_boot(0, 0); // Comando de bootSel
                 break;
-            }
         }
     }
 }
