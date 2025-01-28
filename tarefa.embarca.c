@@ -6,8 +6,6 @@
 #define tempo_frame 250
 char leitura;
 
-// RGB_cod cor1 = obter_cor_por_parametro_RGB(0,0,0);
-
 void animacao(PIO pio, uint sm)
 {
     Matriz_leds_config matriz = {
@@ -59,8 +57,8 @@ void animacao(PIO pio, uint sm)
         {{0.0, 0.0, 0.0}, {0.0, 1.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 1.0, 1.0}, {0.0, 0.0, 0.0}}, // Linha 3
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 1.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
     };
-    /*
-    imprimir_desenho(matriz, pio, sm);//animacao joaoeman
+    
+    imprimir_desenho(matriz, pio, sm);
     sleep_ms(tempo_frame);
     imprimir_desenho(matriz2, pio, sm);
     sleep_ms(tempo_frame);
@@ -70,7 +68,6 @@ void animacao(PIO pio, uint sm)
     sleep_ms(tempo_frame);
     imprimir_desenho(matriz5, pio, sm);
     sleep_ms(tempo_frame);
-    */
 }
 
 void animacao_b(PIO pio, uint sm)
@@ -318,18 +315,6 @@ void animacao_d(PIO pio, uint sm)
     }
 }
 
-void apagar(PIO pio, uint sm){
-    Matriz_leds_config matriz_w = {
-        //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
-        // R    G    B      R    G    B      R    G    B      R    G    B      R    G    B
-        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 0
-        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 1
-        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 2
-        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
-        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 4
-    };
-    imprimir_desenho(matriz_w, pio, sm);
-    }
 void branco(PIO pio, uint sm){
 Matriz_leds_config matriz_branco = {
     //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
@@ -341,7 +326,8 @@ Matriz_leds_config matriz_branco = {
     {{0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}, {0.2, 0.2, 0.2}}, // Linha 4
     };
     imprimir_desenho(matriz_branco, pio, sm);
-    }
+}
+
 void anima_05(PIO pio, uint sm){
     Matriz_leds_config matriz_f1 =  {
         //   Coluna 0         Coluna 1         Coluna 2         Coluna 3         Coluna 4
@@ -490,8 +476,8 @@ void jogo_da_cobrinha(PIO pio, uint sm)
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 0
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 1
         {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 2
-        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
-        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.3}, {0.0, 0.0, 0.0}}, // Linha 4
+        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
+        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.3}, {0.0, 0.0, 0.0}}, // Linha 4
     };
 
     Matriz_leds_config frame8 = {
@@ -500,8 +486,8 @@ void jogo_da_cobrinha(PIO pio, uint sm)
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 0
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 1
         {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 2
-        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
-        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.3}, {0.0, 0.0, 0.0}}, // Linha 4
+        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
+        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.3}, {0.0, 0.0, 0.0}}, // Linha 4
     };
 
     Matriz_leds_config frame9 = {
@@ -510,8 +496,8 @@ void jogo_da_cobrinha(PIO pio, uint sm)
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 0
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.3}}, // Linha 1
         {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 2
-        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
-        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.0}}, // Linha 4
+        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
+        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.0}}, // Linha 4
     };
 
     Matriz_leds_config frame10 = {
@@ -520,8 +506,8 @@ void jogo_da_cobrinha(PIO pio, uint sm)
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 0
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.3}}, // Linha 1
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 2
-        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
-        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}}, // Linha 4
+        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
+        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}}, // Linha 4
     };
 
     Matriz_leds_config frame11 = {
@@ -530,8 +516,8 @@ void jogo_da_cobrinha(PIO pio, uint sm)
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 0
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.3}}, // Linha 1
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 2
-        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
-        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}}, // Linha 4
+        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
+        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}}, // Linha 4
     };
 
     Matriz_leds_config frame12 = {
@@ -550,8 +536,8 @@ void jogo_da_cobrinha(PIO pio, uint sm)
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 0
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.3}}, // Linha 1
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 2
-        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
-        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}}, // Linha 4
+        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
+        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}}, // Linha 4
     };
 
     Matriz_leds_config frame14 = {
@@ -570,8 +556,8 @@ void jogo_da_cobrinha(PIO pio, uint sm)
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 0
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.3}}, // Linha 1
         {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 2
-        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
-        {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}}, // Linha 4
+        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}}, // Linha 3
+        {{0.0, 0.0, 0.0}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}, {0.3, 0.3, 0.3}}, // Linha 4
     };
 
     Matriz_leds_config *frames[] = {&frame1, &frame2, &frame3, &frame4, &frame5, &frame6, &frame7, &frame8, &frame9, &frame10, &frame11, &frame12, &frame13, &frame14, &frame15};
@@ -584,8 +570,6 @@ void jogo_da_cobrinha(PIO pio, uint sm)
     }
 }
 
-// Contagem 3,2,1 e explosão de fogos
-// Testar depois
 void animacao_g(PIO pio, uint sm)
 {
     Matriz_leds_config matriz_g = {
@@ -767,57 +751,56 @@ int main()
     config_animacoes();
     while (true)
     {
-            switch(leitura)
+        switch(leitura)
         {
             case 'A' :
-            tecla_A(pio, sm); //desliga todos os leds
-            break;
+                tecla_A(pio, sm); // Desliga todos os leds
+                break;
             case 'B' :
-            tecla_B(pio, sm); //Acende os leds azuis com 100% de intensidade
-            break;
+                tecla_B(pio, sm); // Acende os leds azuis com 100% de intensidade
+                break;
             case 'C' :
-            tecla_C(pio, sm); // Acende os leds vermelhos com 80% de intensidade
-            break;
+                tecla_C(pio, sm); // Acende os leds vermelhos com 80% de intensidade
+                break;
             case 'D' :
-            tecla_D(pio, sm); // Acende os leds verdes com 50% de intensidade
-            break;
+                tecla_D(pio, sm); // Acende os leds verdes com 50% de intensidade
+                break;
             case '#' :
-            branco(pio, sm);//Acende os leds brancos com 20% de intensidade
-            break;
+                branco(pio, sm); // Acende os leds brancos com 20% de intensidade
+                break;
             case '1' :
-            //Animação de Douglas
-            break;
+                 // Animação de Douglas
+                break;
             case '2' :
-            animacao_g(pio, sm); //Animação de Ana Luiza
+                animacao_g(pio, sm); // Animação de Ana Luiza
             break;
             case '3' :
-            jogo_da_cobrinha(pio, sm); // Animação Leonardo
-            break;
+                jogo_da_cobrinha(pio, sm); // Animação Leonardo
+                break;
             case '4' :
-                executar_animacao(0,pio,sm);
-                //Animação de Alisson
-            break;
+                executar_animacao(0,pio,sm); // Animação de Alisson
+                break;
             case '5' :
-            anima_05(pio, sm);//Animação de Talles Gomes
-            break;
+                anima_05(pio, sm); // Animação de Talles Gomes
+                break;
             case '6' :
-            //Animação de Carolina
-            break;
+                 // Animação de Carolina
+                break;
             case '7' :
-            animacao_b(pio, sm);//Animação de Enzo Lisboa
-            break;
+                animacao_b(pio, sm); // Animação de Enzo Lisboa
+                break;
             case '8' :
-            animacao(pio, sm);//Animação de João, joaoeman
-            break;
+                animacao(pio, sm); // Animação de João, joaoeman
+                break;
             case '9' :
-            animacao_c(pio, sm);//Animação de Enzo Lisboa
-            break;
+                animacao_c(pio, sm); // Animação de Enzo Lisboa
+                break;
             case '0' :
-            animacao_d(pio, sm);//Animação de Enzo Lisboa
-            break;
+                animacao_d(pio, sm); // Animação de Enzo Lisboa
+                break;
             case '*' :
-            reset_usb_boot(0, 0);//Comando de bootSel
-            break;
+                reset_usb_boot(0, 0); // Comando de bootSel
+                break;
         }
     }
 }
