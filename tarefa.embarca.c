@@ -46,7 +46,7 @@ int main()
                 anima_05(pio, sm); // Animação de Talles Gomes
                 break;
             case '6' :
-                 // Animação de Carolina
+                animacao_onda(pio, sm); // Animação de Carolina
                 break;
             case '7' :
                 animacao_b(pio, sm); // Animação de Enzo Lisboa
