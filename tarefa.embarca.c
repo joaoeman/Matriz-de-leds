@@ -3,7 +3,6 @@
 #include "matriz_leds.h"
 #include "pico/bootrom.h"
 
-
 int main()
 {
     PIO pio = pio0;

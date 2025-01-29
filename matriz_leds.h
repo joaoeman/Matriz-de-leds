@@ -38,3 +38,4 @@ void tecla_A(PIO pio, uint sm);
 void tecla_B(PIO pio, uint sm);
 void tecla_C(PIO pio, uint sm);
 void tecla_D(PIO pio, uint sm);
+void animacao_onda(PIO pio, uint sm);

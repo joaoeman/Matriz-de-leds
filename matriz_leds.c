@@ -965,4 +965,3 @@ void animacao_onda(PIO pio, uint sm)
     imprimir_desenho(onda3, pio, sm);
     sleep_ms(tempo_frame);
 }
-
